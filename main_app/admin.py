@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Animal, Photo, Feeding, Weight, Care_Log, Medication
 
-# Register your models here.
+admin.site.register(Animal)
+admin.site.register(Photo)
+admin.site.register(Feeding)
+admin.site.register(Weight)
+admin.site.register(Care_Log)
+admin.site.register(Medication)
