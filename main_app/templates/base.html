@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="{% static 'images/splash.svg' %}"
+  >
+<title>Cat Collector</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+{% block head %}
+{% endblock %}
+</head>
+<body>
+  <header>
+    <div class="header-logo-container">
+      <a href="/" class="header-logo-link">Where's My Dinner?</a>
+    </div>
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'animals_index' %}">Animals</a></li>
+          <li><a href="{% url 'animals_create' %}">Add</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% else %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'home' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>
