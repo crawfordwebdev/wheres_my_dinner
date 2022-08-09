@@ -35,7 +35,7 @@ class Animal(models.Model):
 
 class Photo(models.Model):
   url = models.CharField(max_length=250)
-  animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+  animal = models.OneToOneField(Animal, on_delete=models.CASCADE)
 
 class Feeding(models.Model):
   date = models.DateField('Feeding Date')
