@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+  {% if animal %}
+    <h1>Edit {{animal.name}}</h1>
+  {% else %}
+    <h1>Add an Animal</h1>
+  {% endif %}
+</div>
+{% comment %} 
+  Leaving the action empty makes the form post to the same url used to display it
+{% endcomment %}
+<form action="" method="post" class="form-container">
+  {% comment %} 
+    Django requires the following for security purposes
+    The {% csrf_token %} template tag is a security measure that makes it difficult to perform a cross-site-request-forgery by writing a CSRF (pronounced “see-surf”) token that is validated on the server.
+  {% endcomment %}
+  {% csrf_token %}
+  <table>
+    {% comment %}
+      Render the inputs inside of <tr>s & <td>s
+    {% endcomment %}
+    {{ form.as_table }}
+  </table>
+  <button type="submit" class="btn submit">Submit!</button>
+</form>
+
+{% endblock %}
