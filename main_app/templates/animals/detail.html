@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/animals/animal-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="animal-container">
+  <div class="animal-img">
+    <img 
+      src="{% static 'images/animal_image.png' %}" 
+      alt="{{ animal.name }} the {{ animal.species }}"
+    >
+  </div>
+  <div class="animal-details">
+    <h1>{{ animal.name }}</h1>
+    <div class="animal-actions">
+      <a href="{% url 'animals_update' animal.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>
+    </div>
+  </div>
+</section>
+</div>
+
+{% endblock %}
