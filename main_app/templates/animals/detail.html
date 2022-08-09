@@ -16,16 +16,25 @@
   type="text/css" 
   href="{% static 'css/animals/animal-detail.css' %}"
 />
+<script defer src="{% static 'js/animal-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
 <section class="animal-container">
   <div class="animal-img">
-    <img 
-      src="{% static 'images/animal_image.png' %}" 
-      alt="{{ animal.name }} the {{ animal.species }}"
-    >
+    {% if animal.photo.url %}
+      <img 
+        src="{{ animal.photo.url }}" 
+        alt="A photo of {{ animal.name }}"
+        class="usr-img"
+      >
+    {% else %}
+      <img 
+        src="{% static 'images/none.png' %}" 
+        alt="No image for {{ animal.name }}"
+      >
+    {% endif %}
   </div>
   <div class="animal-details">
     <h1>{{ animal.name }}</h1>
@@ -33,6 +42,20 @@
       <a href="{% url 'animals_update' animal.id %}" class="btn warn">Edit</a>
       <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>
     </div>
+    <h3>Change {{ animal.name }}'s photo</h3>
+    <p id="file-name"></p>
+    <form 
+      action="{% url 'add_photo' animal.id %}"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      {% csrf_token %}
+      <label class="btn secondary">
+        Choose photo
+        <input type="file" name="photo-file" id="file-input">
+      </label>
+      <button type="submit" class="btn submit">Upload Photo</button>
+    </form>
   </div>
 </section>
 </div>
