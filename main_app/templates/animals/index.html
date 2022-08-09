@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/animals/animal-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="card-container">
+  {% for animal in animals %}
+    <div class="card">
+      <a href="{% url 'animals_detail' animal.id %}">
+        <div class="card-content">
+          <div class="card-img-container">
+          </div>
+          <h2 class="card-title">{{ animal.name }} <span>the {{ animal.species }}</span></h2>
+          <p><small>{{ animal.age }} year old {{ animal.get_sex }} {{ animal.breed }}</small></p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+
+</section>
+
+{% endblock %}
