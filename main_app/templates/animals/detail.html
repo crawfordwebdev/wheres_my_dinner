@@ -11,6 +11,7 @@
   src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
 >
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link 
   rel="stylesheet" 
   type="text/css" 
@@ -38,6 +39,30 @@
   </div>
   <div class="animal-details">
     <h1>{{ animal.name }}</h1>
+    <table>
+      <tbody>
+        <tr>
+          <td>Age: </td>
+          <td>{{ animal.age }}</td>
+        </tr>
+        <tr>
+          <td>Sex: </td>
+          <td>{{ animal.get_sex }}</td>
+        </tr>
+        <tr>
+          <td>Species: </td>
+          <td>{{ animal.species }}</td>
+        </tr>
+        <tr>
+          <td>Breed: </td>
+          <td>{{ animal.breed }}</td>
+        </tr>
+        <tr>
+          <td>Color: </td>
+          <td>{{ animal.color }}</td>
+        </tr>
+      </tbody>
+    </table>
     <div class="animal-actions">
       <a href="{% url 'animals_update' animal.id %}" class="btn warn">Edit</a>
       <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>
@@ -57,6 +82,124 @@
       <button type="submit" class="btn submit">Upload Photo</button>
     </form>
   </div>
+</section>
+
+<section class="data-section feedings">
+  <div class="subsection-title">
+    <h2>Feedings</h2>
+    <i class="fa-solid fa-plus"></i>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Date</th><th>Meal</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for feeding in feedings %}
+        <tr>
+          <td>{{feeding.date}}</td>
+          <td>{{feeding.description}}</td>
+          <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash-can"></i></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+</div>
+
+<section class="data-section weights">
+  <div class="subsection-title">
+    <h2>Weight</h2>
+    <i class="fa-solid fa-plus"></i>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Date</th><th>Record</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for weight in weights %}
+        <tr>
+          <td>{{weight.date}}</td>
+          <td>{{weight.description}}</td>
+          <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash-can"></i></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+</div>
+
+<section class="data-section medications">
+  <div class="subsection-title">
+    <h2>Medications</h2>
+    {% comment %} <a href="{% url 'add_medication' animal.id %}"><i class="fa-solid fa-plus"></i></a> {% endcomment %}
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Dosage</th>
+        <th>Frequency</th>
+        <th>Description</th>
+        <th>End Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <form
+        action="{% url 'add_medication' animal.id %}" 
+        method="post" 
+        class="subsection-content form-add-medication"
+      >
+        {% csrf_token %}
+        <td>{{ medication_form.name }}</td>
+        <td>{{ medication_form.dosage }}</td>
+        <td>{{ medication_form.frequency }}</td>
+        <td>{{ medication_form.description }}</td>
+        <td>{{ medication_form.end_date }}</td>
+        <td>
+          <button type="submit" class="btn submit"><i class="fa-solid fa-plus"></i></button>
+        </form>
+        </td>
+      </tr>
+      {% for medication in medications %}
+        <tr>
+          <td>{{ medication.name }}</td>
+          <td>{{ medication.dosage }}</td>
+          <td>{{ medication.frequency }}</td>
+          <td>{{ medication.description }}</td>
+          <td>{{ medication.end_date }}</td>
+          <td>
+            <button class="btn">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="btn">
+              <i class="fa-solid fa-trash-can"></i></td>
+            </button>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+<section class="data-section care-log">
+  <div class="subsection-title">
+    <h2>Care Log</h2>
+    <i class="fa-solid fa-plus"></i>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Date</th><th>Description of Care</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for log in care_log %}
+        <tr>
+          <td>{{ log.date }}</td>
+          <td>{{ log.description }}</td>
+          <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash-can"></i></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </section>
 </div>
 
