@@ -10,11 +10,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Animal, Photo, Feeding, Weight, Care_Log, Medication # This was pointing to main_app.models
 import uuid
-# import boto3
+import boto3
 
 # Add these "constant" variables below the imports
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
-BUCKET = 'wheresmydinner'
+BUCKET = 'wheremydinner'
 
 @login_required
 def animals_index(request):
