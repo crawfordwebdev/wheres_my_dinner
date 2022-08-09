@@ -122,3 +122,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirect when a user tries to access a protected route
+LOGIN_URL = 'home'
+
+# Specify where successful logins redirects to
+LOGIN_REDIRECT_URL = 'animals_index'
+
+# Specify where logging out redirects to
+LOGOUT_REDIRECT_URL = 'home'
