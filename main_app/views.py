@@ -8,8 +8,13 @@ from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Animal, Photo, Feeding, Weight, Care_Log, Medication # This was pointing to main_app.models
+import uuid
+# import boto3
 
-from .models import Animal # This was pointing to main_app.models
+# Add these "constant" variables below the imports
+S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
+BUCKET = 'wheresmydinner'
 
 @login_required
 def animals_index(request):
@@ -30,6 +35,31 @@ def animals_detail(request, animal_id):
     'animal': animal, 
   })
 
+@login_required
+def add_photo(request, animal_id):
+  # photo-file will be the "name" attribute on the <input type="file">
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    # need a unique "key" for S3 / needs image file extension too
+		# uuid.uuid4().hex generates a random hexadecimal Universally Unique Identifier
+    # Add on the file extension using photo_file.name[photo_file.name.rfind('.'):]
+    key = uuid.uuid4().hex + photo_file.name[photo_file.name.rfind('.'):]
+    # just in case something goes wrong
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      # build the full url string
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      # we can assign to cat_id or cat (if you have a cat object)
+      photo = Photo(url=url, animal_id=animal_id)
+      # Remove old photo if it exists
+      cat_photo = Photo.objects.filter(animal_id=animal_id)
+      if cat_photo.first():
+        cat_photo.first().delete()
+      photo.save()
+    except Exception as err:
+      print('An error occurred uploading file to S3: %s' % err)
+  return redirect('animals_detail', animal_id=animal_id)
 
 def home(request):
   return render(request, 'home.html')
