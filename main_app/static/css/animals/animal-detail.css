@@ -24,7 +24,7 @@
   margin-top: 20px;
 }
 
-.feedings-toy-container {
+.data-section-weight-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -41,7 +41,7 @@
   margin: 0 8px;
 }
 
-.toy-container {
+.weight-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -54,23 +54,6 @@
   margin-right: 10px;
 }
 
-.unfed,
-.fed,
-.no-toys,
-.all-toys {
-  margin: 0;
-  font-weight: bold;
-}
-
-.unfed,
-.no-toys {
-  color: var(--danger);
-}
-
-.fed,
-.all-toys {
-  color: var(--submit);
-}
 
 .animal-details h1 {
   font-size: var(--font-xxl);
@@ -94,7 +77,7 @@
   margin: 5px 0;
 }
 
-.feedings-toy-container > section {
+.data-section-weight-container > section {
   width: 80%;
   min-width: 360px;
   border: var(--borders);
@@ -116,14 +99,18 @@
   margin-left: 16px;
 }
 
-.feedings h2,
-.toys h2 {
+.subsection-title i:last-child {
+  margin-left: auto;
+}
+
+.data-section h2,
+.weights h2 {
   font-size: 3.2rem;
   margin: 0;
 }
 
-.feedings h3,
-.toys h3 {
+.data-section h3,
+.weights h3 {
   font-size: var(--font-xl);
   margin: 10px 0;
 }
@@ -140,38 +127,76 @@
   padding: 3px;
 }
 
-.feedings table {
+.animal-details table {
+  width: 10vw;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0 8px;
+}
+
+.animal-details td {
+  padding: 8px 5px;
+  font-size: var(--font-reg);
+}
+
+.animal-details tr td:nth-child(1) {
+  font-weight: 600;
+}
+
+i.fa-solid.fa-plus {
+  font-size: 2.8rem;
+  color: var(--submit);
+}
+
+i.fa-solid.fa-pen-to-square {
+  margin-right: 1.5rem;
+  color: var(--warn);
+}
+
+i.fa-solid.fa-trash-can {
+  color: var(--danger);
+}
+
+.data-section table {
   width: calc(100% - 16px);
   text-align: left;
   border-collapse: collapse;
   margin: 0 8px;
 }
 
-.feedings td {
+.data-section td {
   padding: 8px 5px;
   font-size: var(--font-reg);
 }
 
-.feedings th {
+.data-section th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
   border-bottom: rgb(36, 116, 248) solid 2px;
 }
 
-.feedings tr:nth-child(even) {
+.data-section tr:nth-child(even) {
   background-color: #f3f3fd;
 }
 
-.toy-container p {
+.data-section {
+  width: 600px;
+  max-width: 80vw;
+}
+.medications {
+  width: 750px;
+}
+
+.weight-container p {
   margin: 12px 0;
 }
 
-.toy-container a {
+.weight-container a {
   text-decoration: none;
   color: #111;
 }
 
-.toy-container .btn {
+.weight-container .btn {
   padding: 3px 10px;
   margin-left: 10px;
 }
@@ -186,6 +211,42 @@
 #file-name {
   margin-bottom: 10px;
 }
+/* 
+.form-add-medication {
+}
+.form-add-medication > input {
+  writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+} */
+
 
 @media only screen and (min-width: 768px) {
   .animal-container {
@@ -201,19 +262,19 @@
     margin-right: 25px;
   }
 
-  .feedings-toy-container {
+  .data-section-weight-container {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
   }
 
-  .feedings-toy-container > section {
+  .data-section-weight-container > section {
     width: 45%;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .feedings-toy-container {
+  .data-section-weight-container {
     padding: 0 40px;
   }
 }
