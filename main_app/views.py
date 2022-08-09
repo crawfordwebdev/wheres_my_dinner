@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Animal, Photo, Feeding, Weight, Care_Log, Medication # This was pointing to main_app.models
+from .forms import MedicationForm
 import uuid
 import boto3
 
@@ -31,8 +32,13 @@ def animals_detail(request, animal_id):
   # The Django Query API enables **[Field Lookups](https://docs.djangoproject.com/en/4.0/ref/models/querysets/#field-lookups)** for every field in the model. `id__in` is one such field lookup that checks if the model’s `id` is in a list and that list is being created with this code.
   # toys_cat_doesnt_have = Toy.objects.exclude(id__in = cat.toys.all().values_list('id'))
   # feeding_form = FeedingForm()
+  feedings = Feeding.objects.filter(animal_id=animal_id) # [:5] Only get 5 max
+  weights = Weight.objects.filter(animal_id=animal_id)
+  medications = Medication.objects.filter(animal_id=animal_id)
+  medication_form = MedicationForm()
+  care_log = Care_Log.objects.filter(animal_id=animal_id)
   return render(request, 'animals/detail.html', {
-    'animal': animal, 
+    'animal': animal, 'feedings': feedings, 'weights': weights, 'care_log': care_log, 'medications': medications, 'medication_form': medication_form
   })
 
 @login_required
@@ -80,6 +86,15 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'signup.html', context)
+
+@login_required
+def add_medication(request, animal_id):
+  form = MedicationForm(request.POST)
+  if form.is_valid():
+    new_medication = form.save(commit=False)
+    new_medication.animal_id = animal_id
+    new_medication.save()
+  return redirect('animals_detail', animal_id=animal_id)
 
 class Home(LoginView):
   template_name = 'home.html'
