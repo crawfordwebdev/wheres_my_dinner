@@ -43,6 +43,9 @@ class Feeding(models.Model):
   animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
   def __str__(self):
     return f"{self.description} on {self.date}"
+  
+  class Meta:
+    ordering = ['-date']
 
 class Weight(models.Model):
   date = models.DateField('Weigh Date')
@@ -50,6 +53,9 @@ class Weight(models.Model):
   animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
   def __str__(self):
     return f"{self.description} on {self.date}"
+  
+  class Meta:
+    ordering = ['-date']
 
 class Care_Log(models.Model):
   date = models.DateField()
@@ -57,6 +63,9 @@ class Care_Log(models.Model):
   animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
   def __str__(self):
     return f"{self.description} on {self.date}"
+  
+  class Meta:
+    ordering = ['-date']
 
 class Medication(models.Model):
   name = models.CharField(max_length=100)
