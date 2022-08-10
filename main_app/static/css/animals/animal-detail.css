@@ -149,13 +149,21 @@ i.fa-solid.fa-plus {
 }
 
 i.fa-solid.fa-pen-to-square {
-  margin-right: 1.5rem;
   color: var(--warn);
 }
 
 i.fa-solid.fa-trash-can {
   color: var(--danger);
 }
+
+ table > tbody > tr > td > a > button.btn {
+  border: 2px solid rgba(75, 75, 75, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
+ }
+
+ .data-section > table > tbody > tr > td:last-of-type {
+  white-space: nowrap;
+ }
 
 .data-section table {
   width: calc(100% - 16px);
@@ -172,7 +180,7 @@ i.fa-solid.fa-trash-can {
 .data-section th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
-  border-bottom: rgb(36, 116, 248) solid 2px;
+  border-bottom: var(--borders);
 }
 
 .data-section tr:nth-child(even) {
@@ -211,42 +219,23 @@ i.fa-solid.fa-trash-can {
 #file-name {
   margin-bottom: 10px;
 }
-/* 
-.form-add-medication {
-}
-.form-add-medication > input {
-  writing-mode: horizontal-tb !important;
-    font-style: ;
-    font-variant-ligatures: ;
-    font-variant-caps: ;
-    font-variant-numeric: ;
-    font-variant-east-asian: ;
-    font-weight: ;
-    font-stretch: ;
-    font-size: ;
-    font-family: ;
-    text-rendering: auto;
-    color: fieldtext;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    background-color: field;
-    margin: 0em;
-    padding: 1px 2px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-image: initial;
-} */
 
+.details-button-container {
+  display: flex;
+}
+
+.details-button-container .btn {
+  text-align: center;
+}
+
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+section {
+  margin-bottom: 5vh;
+}
 
 @media only screen and (min-width: 768px) {
   .animal-container {
@@ -257,8 +246,8 @@ i.fa-solid.fa-trash-can {
   }
 
   .animal-img {
-    width: 25%;
-    max-width: 250px;
+    width: 60%;
+    max-width: 375px;
     margin-right: 25px;
   }
 
@@ -274,6 +263,11 @@ i.fa-solid.fa-trash-can {
 }
 
 @media only screen and (min-width: 1024px) {
+  .logs-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
   .data-section-weight-container {
     padding: 0 40px;
   }
