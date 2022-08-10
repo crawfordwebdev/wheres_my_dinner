@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 import os
 import environ
 env = environ.Env()
@@ -27,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2&algpaylp9yjzbg=vy+m6!e$t%9c$v_3yyq-89skvl=xs35r9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG') == 'True' 
 
 ALLOWED_HOSTS = []
 
@@ -135,3 +136,6 @@ LOGIN_REDIRECT_URL = 'animals_index'
 
 # Specify where logging out redirects to
 LOGOUT_REDIRECT_URL = 'home'
+
+django_heroku.settings(locals())
+DEBUG_PROPAGATE_EXCEPTIONS = True
