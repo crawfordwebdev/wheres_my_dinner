@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Animal, Photo, Feeding, Weight, Care_Log, Medication # This was pointing to main_app.models
-from .forms import MedicationForm
+from .forms import MedicationForm, FeedingForm, WeightForm, Care_LogForm
 import uuid
 import boto3
 
@@ -34,12 +34,15 @@ def animals_detail(request, animal_id):
   # toys_cat_doesnt_have = Toy.objects.exclude(id__in = cat.toys.all().values_list('id'))
   # feeding_form = FeedingForm()
   feedings = Feeding.objects.filter(animal_id=animal_id) # [:5] Only get 5 max
+  feeding_form = FeedingForm()
   weights = Weight.objects.filter(animal_id=animal_id)
+  weight_form = WeightForm()
   medications = Medication.objects.filter(animal_id=animal_id)
   medication_form = MedicationForm()
   care_log = Care_Log.objects.filter(animal_id=animal_id)
+  care_log_form = Care_LogForm()
   return render(request, 'animals/detail.html', {
-    'animal': animal, 'feedings': feedings, 'weights': weights, 'care_log': care_log, 'medications': medications, 'medication_form': medication_form
+    'animal': animal, 'feedings': feedings, 'weights': weights, 'care_log': care_log, 'medications': medications, 'medication_form': medication_form, 'care_log_form': care_log_form, 'feeding_form': feeding_form, 'weight_form': weight_form
   })
 
 @login_required
@@ -97,6 +100,33 @@ def add_medication(request, animal_id):
     new_medication.save()
   return redirect('animals_detail', animal_id=animal_id)
 
+@login_required
+def add_feeding(request, animal_id):
+  form = FeedingForm(request.POST)
+  if form.is_valid():
+    new_feeding = form.save(commit=False)
+    new_feeding.animal_id = animal_id
+    new_feeding.save()
+  return redirect('animals_detail', animal_id=animal_id)
+
+@login_required
+def add_weight(request, animal_id):
+  form = WeightForm(request.POST)
+  if form.is_valid():
+    new_weight = form.save(commit=False)
+    new_weight.animal_id = animal_id
+    new_weight.save()
+  return redirect('animals_detail', animal_id=animal_id)
+
+@login_required
+def add_care_log(request, animal_id):
+  form = Care_LogForm(request.POST)
+  if form.is_valid():
+    new_care_log = form.save(commit=False)
+    new_care_log.animal_id = animal_id
+    new_care_log.save()
+  return redirect('animals_detail', animal_id=animal_id)
+
 class Home(LoginView):
   template_name = 'home.html'
 
@@ -125,24 +155,8 @@ class MedicationUpdate(LoginRequiredMixin, UpdateView):
 
 class MedicationDelete(LoginRequiredMixin, DeleteView):
   model = Medication
-  
   def get_success_url(self):
     return reverse_lazy('animals_detail', kwargs={'animal_id': self.object.animal.id})
-
-
-from .models import Animal, Photo, Feeding, Weight, Care_Log, Medication # This was pointing to main_app.models
-
-
-class FeedingCreate(LoginRequiredMixin, CreateView):
-  model = Feeding
-  fields  = ['date','description']
-  def form_valid(self, form):
-    form.instance.animal = Animal.objects.get(pk=self.kwargs.get('pk'))
-    print(f'form.instance.animal: {form.instance.animal}')
-    # if form.instance.animal.user != self.request.user:
-    #   raise form.ValidationError("You are not authorized to change to this animal.")
-
-    return super().form_valid(form)
 
 class FeedingUpdate(LoginRequiredMixin, UpdateView):
   model = Feeding
@@ -150,5 +164,23 @@ class FeedingUpdate(LoginRequiredMixin, UpdateView):
 
 class FeedingDelete(LoginRequiredMixin, DeleteView):
   model = Feeding
+  def get_success_url(self):
+    return reverse_lazy('animals_detail', kwargs={'animal_id': self.object.animal.id})
+
+class WeightUpdate(LoginRequiredMixin, UpdateView):
+  model = Weight
+  fields  = ['date','description']
+
+class WeightDelete(LoginRequiredMixin, DeleteView):
+  model = Weight
+  def get_success_url(self):
+    return reverse_lazy('animals_detail', kwargs={'animal_id': self.object.animal.id})
+
+class Care_LogUpdate(LoginRequiredMixin, UpdateView):
+  model = Care_Log
+  fields  = ['date','description']
+
+class Care_LogDelete(LoginRequiredMixin, DeleteView):
+  model = Care_Log
   def get_success_url(self):
     return reverse_lazy('animals_detail', kwargs={'animal_id': self.object.animal.id})
