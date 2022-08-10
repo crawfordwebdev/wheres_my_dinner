@@ -8,13 +8,19 @@
 .card {
   width: 275px;
   margin: 10px;
-  border: var(--borders);
+  border: var(--card-border);
   box-shadow: var(--card-box-shadow);
+  background: var(--card-bg);
 }
 
+
 .card-content {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
   width: 100%;
+  height: 100%
 }
 
 .usr-img {

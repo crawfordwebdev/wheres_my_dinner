@@ -17,9 +17,19 @@
       <a href="{% url 'animals_detail' animal.id %}">
         <div class="card-content">
           <div class="card-img-container">
+            {% if animal.photo.url %}
+            <img 
+              src="{{ animal.photo.url }}" 
+              alt="A photo of {{ animal.name }}"
+              class="usr-img"
+            >
+            {% else %}
+            {% endif %}
           </div>
-          <h2 class="card-title">{{ animal.name }} <span>the {{ animal.species }}</span></h2>
-          <p><small>{{ animal.age }} year old {{ animal.get_sex }} {{ animal.breed }}</small></p>
+          <div class="card-details-container">
+            <h2 class="card-title">{{ animal.name }} <span>the {{ animal.species }}</span></h2>
+            <p><small>{{ animal.age }} year old {{ animal.get_sex }} {{ animal.breed }}</small></p>
+          </div>
         </div>
       </a>
     </div>
