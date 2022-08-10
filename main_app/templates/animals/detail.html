@@ -170,12 +170,13 @@
           <td>{{ medication.description }}</td>
           <td>{{ medication.end_date }}</td>
           <td>
-            <button class="btn">
+            <a href="{% url 'medications_update' medication.id %}"><button class="btn">
               <i class="fa-solid fa-pen-to-square"></i>
-            </button>
+            </button></a>
+            <a href="{% url 'medications_delete' medication.id %}">
             <button class="btn">
               <i class="fa-solid fa-trash-can"></i></td>
-            </button>
+            </button></a>
         </tr>
       {% endfor %}
     </tbody>
