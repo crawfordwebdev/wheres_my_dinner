@@ -32,7 +32,7 @@ body {
   --nav-bg: rgba(255, 98, 0, .7);
   --nav-bg-ff: rgba(255, 98, 0, .9);
   --header-nav-bg-ff: rgba(255, 113, 25, 0.9);
-  --borders: rgb(209, 80, 0) solid 2px;
+  --borders: 2px solid rgb(209, 80, 0);
   --text-color: rgb(17, 20, 17);
   --link-hover-color: rgb(201,77,0);
   --button-bg: rgb(245, 245, 245);
