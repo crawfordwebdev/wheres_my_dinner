@@ -21,7 +21,7 @@
     <div class="header-logo-container">
       <a href="/" class="header-logo-link">Where's My Dinner?</a>
     </div>
-    <nav>
+    <nav class='navbar'>
       <ul>
         {% if user.is_authenticated %}
           <li><a href="{% url 'animals_index' %}">Animals</a></li>
