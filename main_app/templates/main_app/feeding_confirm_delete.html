@@ -4,14 +4,14 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Delete Medication?</h1>
+  <h1>Delete Feeding?</h1>
 </div>
-<h2>Are you sure you want to delete {{ object.name }}?</h2>
+<h2>Are you sure you want to delete {{ object }}?</h2>
 
 <form action="" method="POST" class="form">
   {% csrf_token %}
   <a 
-    href="{% url 'animals_detail' medication.animal.id %}" 
+    href="{% url 'animals_detail' feeding.animal.id %}" 
     class="btn secondary"
   >
     Cancel
