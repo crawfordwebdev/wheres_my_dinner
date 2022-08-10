@@ -18,4 +18,7 @@
 <br><br>
 
 ## Next Steps:
-- 
+- Ability to assign repeating tasks to other users to assist in animal health and wellbeing
+- Animal medicinal treatment log 
+- Most recent records on details page with the ability to go to a records page for each data category
+- Back-end authorization on animals and their various logs
