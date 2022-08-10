@@ -1,5 +1,6 @@
 from typing import List
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.views import LoginView
@@ -117,3 +118,37 @@ class AnimalUpdate(LoginRequiredMixin, UpdateView):
 class AnimalDelete(LoginRequiredMixin, DeleteView):
   model = Animal
   success_url = '/animals/'
+
+class MedicationUpdate(LoginRequiredMixin, UpdateView):
+  model = Medication
+  fields  = ['name', 'dosage', 'frequency', 'description', 'end_date']
+
+class MedicationDelete(LoginRequiredMixin, DeleteView):
+  model = Medication
+  
+  def get_success_url(self):
+    return reverse_lazy('animals_detail', kwargs={'animal_id': self.object.animal.id})
+
+
+from .models import Animal, Photo, Feeding, Weight, Care_Log, Medication # This was pointing to main_app.models
+
+
+class FeedingCreate(LoginRequiredMixin, CreateView):
+  model = Feeding
+  fields  = ['date','description']
+  def form_valid(self, form):
+    form.instance.animal = Animal.objects.get(pk=self.kwargs.get('pk'))
+    print(f'form.instance.animal: {form.instance.animal}')
+    # if form.instance.animal.user != self.request.user:
+    #   raise form.ValidationError("You are not authorized to change to this animal.")
+
+    return super().form_valid(form)
+
+class FeedingUpdate(LoginRequiredMixin, UpdateView):
+  model = Feeding
+  fields  = ['date','description']
+
+class FeedingDelete(LoginRequiredMixin, DeleteView):
+  model = Feeding
+  def get_success_url(self):
+    return reverse_lazy('animals_detail', kwargs={'animal_id': self.object.animal.id})
