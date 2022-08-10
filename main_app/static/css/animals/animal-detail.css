@@ -149,13 +149,21 @@ i.fa-solid.fa-plus {
 }
 
 i.fa-solid.fa-pen-to-square {
-  margin-right: 1.5rem;
   color: var(--warn);
 }
 
 i.fa-solid.fa-trash-can {
   color: var(--danger);
 }
+
+ table > tbody > tr > td > a > button.btn {
+  border: 2px solid rgba(75, 75, 75, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
+ }
+
+ .data-section > table > tbody > tr > td:last-of-type {
+  white-space: nowrap;
+ }
 
 .data-section table {
   width: calc(100% - 16px);
@@ -220,6 +228,15 @@ i.fa-solid.fa-trash-can {
   text-align: center;
 }
 
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+section {
+  margin-bottom: 5vh;
+}
+
 @media only screen and (min-width: 768px) {
   .animal-container {
     padding: 35px 30px;
@@ -246,6 +263,11 @@ i.fa-solid.fa-trash-can {
 }
 
 @media only screen and (min-width: 1024px) {
+  .logs-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
   .data-section-weight-container {
     padding: 0 40px;
   }
