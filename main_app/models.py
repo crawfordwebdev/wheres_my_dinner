@@ -43,6 +43,9 @@ class Feeding(models.Model):
   animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
   def __str__(self):
     return f"{self.description} on {self.date}"
+    
+  def get_absolute_url(self):
+    return reverse('animals_detail', kwargs={'animal_id': self.animal.id})    
   
   class Meta:
     ordering = ['-date']
@@ -53,7 +56,10 @@ class Weight(models.Model):
   animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
   def __str__(self):
     return f"{self.description} on {self.date}"
-  
+    
+  def get_absolute_url(self):
+    return reverse('animals_detail', kwargs={'animal_id': self.animal.id})
+
   class Meta:
     ordering = ['-date']
 
@@ -63,6 +69,9 @@ class Care_Log(models.Model):
   animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
   def __str__(self):
     return f"{self.description} on {self.date}"
+  
+  def get_absolute_url(self):
+    return reverse('animals_detail', kwargs={'animal_id': self.animal.id})
   
   class Meta:
     ordering = ['-date']
@@ -74,3 +83,6 @@ class Medication(models.Model):
   description = models.CharField(max_length=100)
   end_date = models.DateField('End Date', blank=True)
   animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+
+  def get_absolute_url(self):
+    return reverse('animals_detail', kwargs={'animal_id': self.animal.id})
