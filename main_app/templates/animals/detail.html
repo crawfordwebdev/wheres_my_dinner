@@ -59,13 +59,14 @@
         </tr>
       </tbody>
     </table>
-    <div class="animal-actions">
+    <div class="animal-actions details-button-container">
       <a href="{% url 'animals_update' animal.id %}" class="btn warn">Edit</a>
       <a href="{% url 'animals_delete' animal.id %}" class="btn danger">Delete</a>
     </div>
     <h3>Change {{ animal.name }}'s photo</h3>
     <p id="file-name"></p>
     <form 
+      class = "details-button-container"
       action="{% url 'add_photo' animal.id %}"
       enctype="multipart/form-data"
       method="POST"
