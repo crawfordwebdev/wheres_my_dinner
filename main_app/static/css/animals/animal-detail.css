@@ -4,10 +4,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 375px;
 }
 
 .animal-name {
   font-family: var(--animal-name-font);
+  margin: 15px 0 3px;
+  font-size: var(--font-xl);
 }
 
 .animal-img {
@@ -56,12 +59,6 @@
   height: 25px;
   width: 25px;
   margin-right: 10px;
-}
-
-
-.animal-details h1 {
-  font-size: var(--font-xxl);
-  margin: 15px 0 3px;
 }
 
 .animal-details h2 {
@@ -191,13 +188,6 @@ i.fa-solid.fa-trash-can {
   background-color: #f3f3fd;
 }
 
-.data-section {
-  width: 600px;
-  max-width: 80vw;
-}
-.medications {
-  width: 750px;
-}
 
 .weight-container p {
   margin: 12px 0;
@@ -237,8 +227,28 @@ i.fa-solid.fa-trash-can {
   flex-direction: column;
   justify-content: center;
 }
+
 section {
   margin-bottom: 5vh;
+  padding: 35px 30px;
+}
+
+.animal-container, section {
+  border: var(--card-border);
+  box-shadow: var(--card-box-shadow);
+  background: var(--card-bg);
+  border-radius: 20px;
+}
+
+
+.data-section {
+  min-width: 600px;
+  max-width: 80vw;
+}
+
+.medications {
+  min-width: 1200px;
+  max-width: 85vw;
 }
 
 @media only screen and (min-width: 768px) {
@@ -247,6 +257,10 @@ section {
     flex-direction: row;
     align-items: center;
     justify-content: start;
+  }
+
+  .animal-name {
+    font-size: var(--font-xxl);
   }
 
   .animal-img {
@@ -267,11 +281,16 @@ section {
 }
 
 @media only screen and (min-width: 1024px) {
+  .animal-name {
+    font-size: var(--font-xtreme);
+  }
+
   .logs-container {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
   .data-section-weight-container {
     padding: 0 40px;
   }
