@@ -28,21 +28,22 @@ body {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  background-color: rgb(253, 240, 213);
-  --nav-bg: rgba(255, 98, 0, .7);
-  --nav-bg-ff: rgba(255, 98, 0, .9);
-  --header-nav-bg-ff: rgba(255, 113, 25, 0.9);
-  --borders: 2px solid rgb(209, 80, 0);
+
+  background-color: rgb(235, 235, 235);
+  --nav-bg: rgba(142, 230, 209, .7);
+  --nav-bg-ff: rgba(142, 230, 209, .9);
+  --header-nav-bg-ff: rgba(142, 230, 209, 0.9);
+  --borders: 2px solid rgb(49, 94, 84);
   --text-color: rgb(17, 20, 17);
-  --link-hover-color: rgb(201,77,0);
+  --link-hover-color: rgb(30, 65, 57);
   --button-bg: rgb(245, 245, 245);
   --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
-  --warn: rgb(255, 102, 0);
+  --submit: rgb(49, 94, 84);
+  --warn: rgb(77, 152, 184);
   --danger: rgb(220, 20, 30);
   --secondary: rgb(57, 57, 57);
-  --card-bg: rgb(227,215,191);
-  --card-border: 2px solid rgb(41, 74, 51);
+  --card-bg: rgb(255, 255, 255);
+  --card-border: 2px solid rgb(49, 94, 84);
   --card-box-shadow: 5px 5px 6px -1px #AAA;
   --card-border-radius: 6px;
   
@@ -55,7 +56,8 @@ body {
   /* Fonts */
   --logo-font: 'Permanent Marker';
   --navbar-logo-font: var(--logo-font);
-  --animal-name-font: 'Poiret One';
+  /* --animal-name-font: 'Poiret One'; Font Alternative*/
+  --animal-name-font: var(--logo-font);
 }
 
 
@@ -91,6 +93,7 @@ ul {
 main {
   width: 100%;
   padding: 0 10px;
+  margin-top: 10px;
 }
 
 h2 {
@@ -209,6 +212,7 @@ nav li {
   main {
     max-width: 1300px;
     min-height: calc(100vh - 53px);
+    margin-top: 20px;
   }
 
   nav,
@@ -260,7 +264,7 @@ nav li {
 
 @media only screen and (min-width: 1024px) {
   main {
-    min-height: calc(100vh - 55px);
+    min-height: calc(100vh - 60px);
   }
   
   header {
