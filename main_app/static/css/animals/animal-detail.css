@@ -6,6 +6,10 @@
   justify-content: center;
 }
 
+.animal-name {
+  font-family: var(--animal-name-font);
+}
+
 .animal-img {
   width: 75%;
   max-width: 350px;
