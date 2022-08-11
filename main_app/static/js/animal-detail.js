@@ -9,3 +9,20 @@ fileInput.addEventListener('change', evt => {
     fileName.innerText = ""
   }
 })
+
+
+
+// Need to refactor this to work on all of the dates on the page...
+
+// const dateInput = document.getElementsByClassName('id_date')
+
+// const picker = MCDatepicker.create({
+//   el: '#id_date',
+//   dateFormat: 'yyyy-mm-dd',
+//   closeOnBlur: true,
+//   selectedDate: new Date(),
+// })
+
+// dateInput.addEventListener("click", (evt) => {
+//   picker.open()
+// })
