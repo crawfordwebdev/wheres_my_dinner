@@ -84,7 +84,7 @@
 <div class="logs-container">
   <section class="data-section feedings">
     <div class="subsection-title">
-      <h2>Feedings</h2>
+      <h2>Feeding</h2>
     </div>
     <table class="data-table">
       <thead class="data-thead">
@@ -166,10 +166,51 @@
     </table>
   </section>
 
+  <section class="data-section care-log">
+    <div class="subsection-title">
+      <h2>Care Log</h2>
+    </div>
+    <table class="data-table">
+      <thead class="data-thead">
+        <tr class="data-tr"><th>Date</th><th>Description of Care</th><th></th></tr>
+      </thead>
+      <tbody class="data-tbody">
+        <tr class="data-tr">
+          <form
+          action="{% url 'add_care_log' animal.id %}" 
+          method="post" 
+          class="subsection-content form-add form-care_log"
+        >
+          {% csrf_token %}
+          <td class="data-td data-log-date">{{ care_log_form.date }}</td>
+          <td class="data-td data-log-description">{{ care_log_form.description }}</td>
+          <td class="data-td">
+            <button type="submit" class="btn submit"><i class="fa-solid fa-plus"></i></button>
+          </form>
+          </td>
+        </tr>
+        {% for log in care_log %}
+          <tr class="data-tr">
+            <td class="data-td data-log-date">{{ log.date }}</td>
+            <td class="data-td data-log-description">{{ log.description }}</td>
+            <td class="data-td">
+              <a href="{% url 'care_log_update' log.id %}"><button class="btn">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button></a>
+              <a href="{% url 'care_log_delete' log.id %}">
+              <button class="btn">
+                <i class="fa-solid fa-trash-can"></i>
+              </button></a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
   <section class="data-section medications">
     <div class="subsection-title">
-      <h2>Medications</h2>
-      {% comment %} <a href="{% url 'add_medication' animal.id %}"><i class="fa-solid fa-plus"></i></a> {% endcomment %}
+      <h2>Medication</h2>
     </div>
     <table class="data-table">
       <thead class="data-thead">
@@ -222,47 +263,6 @@
     </table>
   </section>
 
-  <section class="data-section care-log">
-    <div class="subsection-title">
-      <h2>Care Log</h2>
-    </div>
-    <table class="data-table">
-      <thead class="data-thead">
-        <tr class="data-tr"><th>Date</th><th>Description of Care</th><th></th></tr>
-      </thead>
-      <tbody class="data-tbody">
-        <tr class="data-tr">
-          <form
-          action="{% url 'add_care_log' animal.id %}" 
-          method="post" 
-          class="subsection-content form-add form-care_log"
-        >
-          {% csrf_token %}
-          <td class="data-td data-log-date">{{ care_log_form.date }}</td>
-          <td class="data-td data-log-description">{{ care_log_form.description }}</td>
-          <td class="data-td">
-            <button type="submit" class="btn submit"><i class="fa-solid fa-plus"></i></button>
-          </form>
-          </td>
-        </tr>
-        {% for log in care_log %}
-          <tr class="data-tr">
-            <td class="data-td data-log-date">{{ log.date }}</td>
-            <td class="data-td data-log-description">{{ log.description }}</td>
-            <td class="data-td">
-              <a href="{% url 'care_log_update' log.id %}"><button class="btn">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button></a>
-              <a href="{% url 'care_log_delete' log.id %}">
-              <button class="btn">
-                <i class="fa-solid fa-trash-can"></i>
-              </button></a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </section>
 </div>
 
 {% endblock %}
