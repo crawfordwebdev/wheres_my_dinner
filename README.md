@@ -23,3 +23,4 @@
 - Most recent records on details page with the ability to go to a records page for each data category
 - Back-end authorization on animals and their various logs
 - Replace the two button photo upload with one button
+- Update styling for animal details for more mobile viewports
