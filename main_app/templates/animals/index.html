@@ -27,8 +27,10 @@
             {% endif %}
           </div>
           <div class="card-details-container">
-            <h2 class="card-title">{{ animal.name }} <span>the {{ animal.species }}</span></h2>
-            <p><small>{{ animal.age }} year old {{ animal.get_sex }} {{ animal.breed }}</small></p>
+            <h2 class="card-animal-name">{{ animal.name }}</h2>
+            <div class="card-animal-species-sex">{{ animal.species }} ({{ animal.get_sex}})</div>
+            <div class="card-animal-age">{{ animal.age }} year old</div>
+            <div class="card-animal-breed">{{ animal.breed }}</div>
           </div>
         </div>
       </a>

@@ -6,11 +6,12 @@
 }
 
 .card {
-  width: 275px;
+  width: 375px;
   margin: 10px;
   border: var(--card-border);
   box-shadow: var(--card-box-shadow);
   background: var(--card-bg);
+  border-radius: 20px;
 }
 
 
@@ -23,6 +24,29 @@
   height: 100%
 }
 
+.card-details-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-animal-name {
+  font-family: var(--logo-font);
+  font-size: 2.7rem;
+  margin-block-start: 0.1rem;
+  margin-block-end: 0.1rem;
+}
+
+.card-animal-species-sex {
+  font-size: 2.4rem;
+}
+
+.card-animal-age, 
+.card-animal-breed {
+  font-size: 1.5rem;
+
+}
+
 .usr-img {
   width: 100%;
   border-radius: var(--card-border-radius);
@@ -31,14 +55,4 @@
 .card > a {
   text-decoration: none;
   color: var(--text-color);
-}
-
-.card h2 {
-  margin: 10px 0;
-  font-size: var(--font-xl);
-}
-
-.card p {
-  margin: 5px 0;
-  font-size: var(--font-reg);
 }
