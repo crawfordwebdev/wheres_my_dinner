@@ -31,6 +31,9 @@ class Animal(models.Model):
   
   def get_sex(self):
     return f"{self.get_sex_display()}"
+  
+  class Meta:
+    ordering = ['species', 'name']
 
 class Photo(models.Model):
   url = models.CharField(max_length=250)
