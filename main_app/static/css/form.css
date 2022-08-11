@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.animal-form-container {
+.animal-form-container, .data-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,12 +18,22 @@
   max-width: 1024px;
 }
 
+.data-form-container > h2 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#edit-object {
+  font-size:large;
+}
+
 .form-buttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin: 0 25%;
 }
+
 .form-buttons > .btn {
   margin-right: 10px;
 }
