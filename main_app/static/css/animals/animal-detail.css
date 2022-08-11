@@ -294,4 +294,132 @@ section {
   .data-section-weight-container {
     padding: 0 40px;
   }
+
+  table > tbody > tr > td > a > button.btn {
+    border: 2px solid rgba(75, 75, 75, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+   }
+  
+   .data-section > table > tbody > tr > td:last-of-type {
+    white-space: nowrap;
+   }
+  
+  .data-section table {
+    width: calc(100% - 16px);
+    text-align: left;
+    border-collapse: collapse;
+    margin: 0 8px;
+  }
+  
+  .data-section td {
+    padding: 8px 5px;
+    font-size: var(--font-reg);
+  }
+  
+  .data-section th {
+    font-size: var(--font-l);
+    padding: 5px 5px 0;
+    border-bottom: var(--borders);
+  }
+  
+  .data-section tr:nth-child(even) {
+    background-color: #f3f3fd;
+  }
+}
+
+
+/* Modified From: https://css-tricks.com/responsive-data-tables/ */
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+  main {
+    padding: 5px;
+  }
+
+  .data-section {
+    width: 100vw;
+  }
+
+  /* .animal-section, section {
+    border: var(--card-border);
+    box-shadow: var(--card-box-shadow);
+    background: var(--card-bg);
+    border-radius: 0;
+  } */
+
+  .medications, .data-section {
+    min-width: 375px;
+    width: 700px;
+    max-width: 95vw;
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+
+  .subsection-title > h2 {
+    margin: 0 auto;
+  }
+
+	/* Force table to not be like tables anymore */
+	table.data-table, 
+  thead.data-thead, 
+  tbody.data-tbody, 
+  th.data-th, 
+  td.data-td, 
+  tr.data-tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+   thead.data-thead tr.data-tr, thead.data-thead { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr.data-tr { border: 1px solid #ccc; }
+	
+	td.data-td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+    display: flex;
+	}
+
+  td.data-td:last-child {
+    justify-content: flex-end;
+  }
+	
+	td.data-td:before { 
+		/* Now like a table header */
+		position: relative;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 25px; 
+		white-space: nowrap;
+	}
+
+  td {
+    --td-label-font-weight: 600;
+  }
+
+  td.data-log-date:before { font-weight: 600; content: "Date:"; }
+  td.data-log-description:before { font-weight: 600; content: "Description"; }
+
+  td.data-medication-td:before {
+    font-weight: var(--td-label-font-weight);
+  }
+
+  td.data-medication-td:nth-of-type(1):before { content: "Name:"; }
+  td.data-medication-td:nth-of-type(2):before { content: "Dosage:"; }
+  td.data-medication-td:nth-of-type(3):before { content: "Frequency:"; }
+  td.data-medication-td:nth-of-type(4):before { content: "Description:"; }
+  td.data-medication-td:nth-of-type(5):before { content: "End Date:"; }
 }
