@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.animal-form-container, .data-form-container {
+.animal-form-container, .data-form-container, .signup-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
