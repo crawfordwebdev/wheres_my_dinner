@@ -67,6 +67,20 @@ main > section {
   text-align: center;
 }
 
+.login-form-buttons {
+  margin-left: auto;
+  display: flex;
+}
+.login-form-buttons > button:first-child {
+  margin-right: 10px;
+}
+
+.login-form-buttons > button:first-child > a {
+  text-decoration: none;
+  color: var(--warn);
+}
+
+
 @media only screen and (min-width: 768px) {
   main {
     justify-content: space-around;
