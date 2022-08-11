@@ -38,3 +38,4 @@
 - Update styling for animal details for more mobile viewports
 - Ability to turn off the animal images, easier to navigate through lots of animals by name
 - General task with photo(s) attached, let this link to an animal.
+- Add ability to record the location of the animal.
