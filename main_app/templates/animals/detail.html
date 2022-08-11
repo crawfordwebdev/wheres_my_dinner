@@ -35,27 +35,27 @@
   </div>
   <div class="animal-details">
     <h1 class="animal-name">{{ animal.name }}</h1>
-    <table>
-      <tbody>
-        <tr>
-          <td>Age: </td>
-          <td>{{ animal.age }}</td>
+    <table class="animal-details-table">
+      <tbody class="animal-details-tbody">
+        <tr class="animal-details-tr">
+          <td class="animal-details-td">Age: </td>
+          <td class="animal-details-td">{{ animal.age }}</td>
         </tr>
-        <tr>
-          <td>Sex: </td>
-          <td>{{ animal.get_sex }}</td>
+        <tr class="animal-details-tr">
+          <td class="animal-details-td">Sex: </td>
+          <td class="animal-details-td">{{ animal.get_sex }}</td>
         </tr>
-        <tr>
-          <td>Species: </td>
-          <td>{{ animal.species }}</td>
+        <tr class="animal-details-tr">
+          <td class="animal-details-td">Species: </td>
+          <td class="animal-details-td">{{ animal.species }}</td>
         </tr>
-        <tr>
-          <td>Breed: </td>
-          <td>{{ animal.breed }}</td>
+        <tr class="animal-details-tr">
+          <td class="animal-details-td">Breed: </td>
+          <td class="animal-details-td">{{ animal.breed }}</td>
         </tr>
-        <tr>
-          <td>Color: </td>
-          <td>{{ animal.color }}</td>
+        <tr class="animal-details-tr">
+          <td class="animal-details-td">Color: </td>
+          <td class="animal-details-td">{{ animal.color }}</td>
         </tr>
       </tbody>
     </table>
@@ -86,30 +86,30 @@
     <div class="subsection-title">
       <h2>Feedings</h2>
     </div>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Meal</th><th></th></tr>
+    <table class="data-table">
+      <thead class="data-thead">
+        <tr class="data-tr"><th>Date</th><th>Meal</th><th></th></tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody class="data-tbody">
+        <tr class="data-tr">
           <form
           action="{% url 'add_feeding' animal.id %}" 
           method="post" 
           class="subsection-content form-add form-add-feeding"
         >
           {% csrf_token %}
-          <td>{{ feeding_form.date }}</td>
-          <td>{{ feeding_form.description }}</td>
-          <td>
+          <td class="data-td data-log-date">{{ feeding_form.date }}</td>
+          <td class="data-td data-log-description">{{ feeding_form.description }}</td>
+          <td class="data-td">
             <button type="submit" class="btn submit"><i class="fa-solid fa-plus"></i></button>
           </form>
           </td>
         </tr>
         {% for feeding in feedings %}
-          <tr>
-            <td>{{feeding.date}}</td>
-            <td>{{feeding.description}}</td>
-            <td>
+          <tr class="data-tr">
+            <td class="data-td data-log-date">{{feeding.date}}</td>
+            <td class="data-td data-log-description">{{feeding.description}}</td>
+            <td class="data-td">
               <a href="{% url 'feedings_update' feeding.id %}"><button class="btn">
                 <i class="fa-solid fa-pen-to-square"></i>
               </button></a>
@@ -128,30 +128,30 @@
     <div class="subsection-title">
       <h2>Weight</h2>
     </div>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Record</th><th></th></tr>
+    <table class="data-table">
+      <thead class="data-thead">
+        <tr class="data-tr"><th>Date</th><th>Record</th><th></th></tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody class="data-tbody">
+        <tr class="data-tr">
           <form
           action="{% url 'add_weight' animal.id %}" 
           method="post" 
           class="subsection-content form-add form-add-weight"
         >
           {% csrf_token %}
-          <td>{{ weight_form.date }}</td>
-          <td>{{ weight_form.description }}</td>
-          <td>
+          <td class="data-td data-log-date">{{ weight_form.date }}</td>
+          <td class="data-td data-log-description">{{ weight_form.description }}</td>
+          <td class="data-td">
             <button type="submit" class="btn submit"><i class="fa-solid fa-plus"></i></button>
           </form>
           </td>
         </tr>
         {% for weight in weights %}
-          <tr>
-            <td>{{weight.date}}</td>
-            <td>{{weight.description}}</td>
-            <td>
+          <tr class="data-tr">
+            <td class="data-td data-log-date">{{weight.date}}</td>
+            <td class="data-td data-log-description">{{weight.description}}</td>
+            <td class="data-td">
               <a href="{% url 'weight_update' weight.id %}"><button class="btn">
                 <i class="fa-solid fa-pen-to-square"></i>
               </button></a>
@@ -171,9 +171,9 @@
       <h2>Medications</h2>
       {% comment %} <a href="{% url 'add_medication' animal.id %}"><i class="fa-solid fa-plus"></i></a> {% endcomment %}
     </div>
-    <table>
-      <thead>
-        <tr>
+    <table class="data-table">
+      <thead class="data-thead">
+        <tr class="data-tr">
           <th>Name</th>
           <th>Dosage</th>
           <th>Frequency</th>
@@ -182,32 +182,32 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody class="data-tbody">
+        <tr class="data-tr">
           <form
           action="{% url 'add_medication' animal.id %}" 
           method="post" 
           class="subsection-content form-add form-add-medication"
         >
           {% csrf_token %}
-          <td>{{ medication_form.name }}</td>
-          <td>{{ medication_form.dosage }}</td>
-          <td>{{ medication_form.frequency }}</td>
-          <td>{{ medication_form.description }}</td>
-          <td>{{ medication_form.end_date }}</td>
-          <td>
+          <td class="data-td data-medication-td">{{ medication_form.name }}</td>
+          <td class="data-td data-medication-td">{{ medication_form.dosage }}</td>
+          <td class="data-td data-medication-td">{{ medication_form.frequency }}</td>
+          <td class="data-td data-medication-td">{{ medication_form.description }}</td>
+          <td class="data-td data-medication-td">{{ medication_form.end_date }}</td>
+          <td class="data-td">
             <button type="submit" class="btn submit"><i class="fa-solid fa-plus"></i></button>
           </form>
           </td>
         </tr>
         {% for medication in medications %}
-          <tr>
-            <td>{{ medication.name }}</td>
-            <td>{{ medication.dosage }}</td>
-            <td>{{ medication.frequency }}</td>
-            <td>{{ medication.description }}</td>
-            <td>{{ medication.end_date }}</td>
-            <td>
+          <tr class="data-tr">
+            <td class="data-td data-medication-td">{{ medication.name }}</td>
+            <td class="data-td data-medication-td">{{ medication.dosage }}</td>
+            <td class="data-td data-medication-td">{{ medication.frequency }}</td>
+            <td class="data-td data-medication-td">{{ medication.description }}</td>
+            <td class="data-td data-medication-td">{{ medication.end_date }}</td>
+            <td class="data-td">
               <a href="{% url 'medications_update' medication.id %}"><button class="btn">
                 <i class="fa-solid fa-pen-to-square"></i>
               </button></a>
@@ -226,30 +226,30 @@
     <div class="subsection-title">
       <h2>Care Log</h2>
     </div>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Description of Care</th><th></th></tr>
+    <table class="data-table">
+      <thead class="data-thead">
+        <tr class="data-tr"><th>Date</th><th>Description of Care</th><th></th></tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody class="data-tbody">
+        <tr class="data-tr">
           <form
           action="{% url 'add_care_log' animal.id %}" 
           method="post" 
           class="subsection-content form-add form-care_log"
         >
           {% csrf_token %}
-          <td>{{ care_log_form.date }}</td>
-          <td>{{ care_log_form.description }}</td>
-          <td>
+          <td class="data-td data-log-date">{{ care_log_form.date }}</td>
+          <td class="data-td data-log-description">{{ care_log_form.description }}</td>
+          <td class="data-td">
             <button type="submit" class="btn submit"><i class="fa-solid fa-plus"></i></button>
           </form>
           </td>
         </tr>
         {% for log in care_log %}
-          <tr>
-            <td>{{ log.date }}</td>
-            <td>{{ log.description }}</td>
-            <td>
+          <tr class="data-tr">
+            <td class="data-td data-log-date">{{ log.date }}</td>
+            <td class="data-td data-log-description">{{ log.description }}</td>
+            <td class="data-td">
               <a href="{% url 'care_log_update' log.id %}"><button class="btn">
                 <i class="fa-solid fa-pen-to-square"></i>
               </button></a>

@@ -6,19 +6,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="data-form-container">
+  <div class="page-header">
   {% if object %}
-    <h1>Edit {{ object }}</h1>
+    <h1>Edit: {{ object.animal.name }}</h1>
   {% else %}
     <h1>Add a Feeding</h1>
   {% endif %}
+  </div>
+  <form action="" method="post" class="form-container" autocomplete="off">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <div class="form-buttons">
+      <a href="{% url 'animals_detail' object.animal.id %}" class="btn warn">Cancel</a>
+      <button type="submit" class="btn submit">Submit</button>
+    </div>
+  </form>
 </div>
-<form action="" method="post" class="form-container" autocomplete="off">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <button type="submit" class="btn submit">Submit</button>
-</form>
-
 {% endblock %}
