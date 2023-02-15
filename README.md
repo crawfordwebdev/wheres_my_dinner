@@ -2,7 +2,6 @@
 <p>An app for keeping track of all your little critters and their needs.</p><br>
 
 ## Getting Started: 
-**[![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)(Deployed Link)](https://wheresmydinner.herokuapp.com/)**<br>
 **[![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) (Planning Link)](https://trello.com/b/UPMMvs31/wheres-my-dinner)**<br><br>
 
 ## Technologies Used: 
